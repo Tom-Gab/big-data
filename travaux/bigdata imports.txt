@@ -1,0 +1,11 @@
+mongoimport --db exerciceRequete --collection persons --drop --file Downloads/persons.json --jsonArray
+mongoimport --db exerciceRequete --collection restaurants --drop --file Downloads/restaurants.json
+mongoimport --db exerciceRequete --collection companies --drop --file Downloads/companies.json --jsonArray
+
+db.restaurants.find({cuisine:"Chinese"})
+db.restaurants.find({"address.zipcode":"10003"})
+db.restaurants.find({cuisine:"French", borough: "Queens"})
+db.restaurants.find({$or:[{borough:"Manhattan"}, {borough:"Brooklyn"}]})
+db.restaurants.find({cuisine:"Chicken", $or:[{borough:"Manhattan"}, {borough:"Brooklyn"}]})
+db.restaurants.find({"grades.score":{$gt:70}})
+db.restaurants.find({"grades.score":{$elemMatch:{$gt:90, $lt:100}}})

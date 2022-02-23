@@ -1,0 +1,18 @@
+use('aggregations');
+
+db.movies.aggregate([
+  {
+    $match: {
+      awards: /Won \d{1,2} Oscars?/
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      highest: { $max: "$imdb.rating" },
+      lowest: { $min: "$imdb.rating" },
+      average: { $avg: "$imdb.rating" },
+      deviation: { $stdDevSamp: "$imdb.rating" }
+    }
+  }
+])

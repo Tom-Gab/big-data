@@ -1,0 +1,31 @@
+
+
+use Cinema
+db.film.insertOne([{titre:"Forrest Gump", dateSortie:new date("1984-10-5"), duree:140, acteur:["Tom Hanks", "Gary Sinise"]}])
+db.film.insertOne([{titre:"Tu ne tueras point", dateSortie:new date("2016-11-9"), duree:140, acteur:["Mel Gibson"]}])
+db.film.insertOne([{titre:"La ligne verte", dateSortie:new date("2000-3-1"), duree:189, acteur:["Tom Hanks", "Michael Clark Duncan"]}])
+db.film.insertOne([{titre:"Your Name", dateSortie:new date("2016-12-28"), acteur:["Ryunosuke Kamiki", "Mone Kamishiraishi"]}])
+db.film.insertOne([{titre:"Django Unchained", duree:164, acteur:["Jamie Foxx", "Christopher Waltz"]}])
+
+
+db.film.find()
+db.film.find({dateSortie:2016})
+db.film.find({duree:[$gt:150]})
+db.film.find({acteur:"Tom Hanks"})
+db.film.find({acteur:[size:1]})
+
+
+db.film.updateOne(
+	{titre:"Your Name"},
+	{
+	$set:{duree:106}
+	}
+)
+
+db.fil.deleteMany(
+	{title:"Forrest Gump"}
+	{title:"Tu ne tueras point"}
+	{title:"La ligne verte"}
+	{title:"Your Name"}
+	{title:"Django Unchained"}
+)
